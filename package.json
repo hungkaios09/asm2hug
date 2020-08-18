@@ -4,11 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node ./app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  // "author": "",
-  // "license": "ISC",
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "consolidate": "^0.15.1",
@@ -17,15 +17,5 @@
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.0",
     "multer": "^1.4.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hungkaios09/asm2hug"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hungkaios09/asm2hug/issues"
-  },
-  "homepage": "https://github.com/hungkaios09/asm2hug#readme"
+  }
 }
