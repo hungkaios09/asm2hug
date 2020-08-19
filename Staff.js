@@ -12,7 +12,7 @@ router.get('/',async (req,res)=>  // có async thì phải có await
     let client= await MongoClient.connect(url);
     let dbo = client.db("DBAsm");
     let results = await dbo.collection("Staff").find({}).toArray();
-    res.render('allStaff',{Employee:results});
+    res.render('allStaff',{Staff:results});
 })
 
 //sanpham/search nhưng dùng POST
@@ -33,6 +33,15 @@ router.post('/insertStaff',async (req,res)=>{
     let gen = req.body.gen;
     let number = req.body.number;
     let email = req.body.email;
+    // if(isNaN(number)){
+    //     let numberEror = {numberError:"Must Enter only number!"};
+    //     res.render('insertStaff',{number:numberEror});
+    // }
+    // // else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false){
+
+    //     let emaileror = {emailError:"Invalid"};
+    //     res.render('insertStaff',{email:emailEror});
+    // }
     let newStaff = {Name : name, Gen : gen, Number : number, Email : email}; 
     await dbo.collection("Staff").insertOne(newStaff);
     let results = await dbo.collection("Staff").find({}).toArray();
