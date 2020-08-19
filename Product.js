@@ -33,7 +33,6 @@ var MongoClient = require('mongodb').MongoClient;
 router.post('/insert',async (req,res)=>{
     let client= await MongoClient.connect(url);
     let dbo = client.db("DBAsm");
-   // let dbo = client.db("NoSQLBoosterSamples");
     
     let name = req.body.nameProduct; 
     let price = req.body.priceProduct;
