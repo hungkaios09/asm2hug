@@ -23,7 +23,7 @@ router.post('/searchStaff',async (req,res)=>{ //search
   let results = await dbo.collection("Staff").find({"Name":searchStaff}).toArray();
   res.render('allStaff',{Staff:results});
   //let results = await dbo.collection("Staff").find({"Name":searchStaff,'i'}).toArray();
-  //res.render('allStaff',{Staff:results}); 
+  //res.render('allStaff',{Staff:results});
 })
 
 var MongoClient = require('mongodb').MongoClient;
@@ -31,26 +31,24 @@ var MongoClient = require('mongodb').MongoClient;
 router.post('/insertStaff',async (req,res)=>{
     let client= await MongoClient.connect(url);
     let dbo = client.db("DBAsm");
-    let name = req.body.nameStaff; 
+    let name = req.body.nameStaff;
     let gen = req.body.gen;
     let number = req.body.number;
     let email = req.body.email;
-    
+
     // if(isNaN(number)){
-    //     let numberEror = {numberError:"Must Enter only number!"};
-    //     res.render('insertStaff',{number:numberEror});
+    //      let numberEror = {numberError:"Must Enter only number!"};
+    //      res.render('insertStaff',{number:numberEror});
     // }
     // else {
-    //if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false){
+    // if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false){
 
-    //     let emaileror = {emailError:"Invalid"};
-    //     res.render('insertStaff',{email:emailEror});
-    // }
-    let newStaff = {Name : name, Gen : gen, Number : number, Email : email}; 
+    //    let emailEror = {emailError:"Invalid"};
+    //    res.render('insertStaff',{email:emailEror});
+    let newStaff = {Name : name, Gen : gen, Number : number, Email : email};
     await dbo.collection("Staff").insertOne(newStaff);
     let results = await dbo.collection("Staff").find({}).toArray();
     res.render('allStaff',{Staff:results});
-    
 })
 
 // //update SanPham
@@ -75,7 +73,7 @@ router.post('/insertStaff',async (req,res)=>{
 //     let dbo = client.db("ATNCompany");
 //     await dbo.collection("Employee").updateOne(condition,newValues);
 //     let results = await dbo.collection("Employee").find({}).toArray();
-//     res.render('allEmployee',{Employee:results}); 
+//     res.render('allEmployee',{Employee:results});
 //})
 
 //delete truc tiep
@@ -90,5 +88,5 @@ router.get('/deleteStaff', async (req, res) => {
     res.render('allStaff', { Staff:results });
 })
 
-   
+
 module.exports = router;
