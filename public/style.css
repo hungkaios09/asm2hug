@@ -1,9 +1,8 @@
 .bg{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: auto;
-    position:relative;
-  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   }
 .showtext {
     position:absolute;
