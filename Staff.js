@@ -11,7 +11,7 @@ router.get('/',async (req,res)=>  // có async thì phải có await
 {
     let client= await MongoClient.connect(url);
     let dbo = client.db("DBAsm");
-    let results = await dbo.collection("Staff").find({}).toArray();
+    let results = await dbo.collection("Staff").find({}).toArray(); //tim all data trong db
     res.render('allStaff',{Staff:results});
 })
 
@@ -22,6 +22,8 @@ router.post('/searchStaff',async (req,res)=>{ //search
   let dbo = client.db("DBAsm");
   let results = await dbo.collection("Staff").find({"Name":searchStaff}).toArray();
   res.render('allStaff',{Staff:results});
+  //let results = await dbo.collection("Staff").find({"Name":searchStaff,'i'}).toArray();
+  //res.render('allStaff',{Staff:results}); 
 })
 
 var MongoClient = require('mongodb').MongoClient;
