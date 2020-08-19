@@ -33,11 +33,13 @@ router.post('/insertStaff',async (req,res)=>{
     let gen = req.body.gen;
     let number = req.body.number;
     let email = req.body.email;
+    
     // if(isNaN(number)){
     //     let numberEror = {numberError:"Must Enter only number!"};
     //     res.render('insertStaff',{number:numberEror});
     // }
-    // // else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false){
+    // else {
+    //if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) == false){
 
     //     let emaileror = {emailError:"Invalid"};
     //     res.render('insertStaff',{email:emailEror});
@@ -46,6 +48,7 @@ router.post('/insertStaff',async (req,res)=>{
     await dbo.collection("Staff").insertOne(newStaff);
     let results = await dbo.collection("Staff").find({}).toArray();
     res.render('allStaff',{Staff:results});
+    
 })
 
 // //update SanPham
