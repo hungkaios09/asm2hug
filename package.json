@@ -2,8 +2,9 @@
   "name": "asm2hung",
   "version": "1.0.0",
   "description": "��#\u0000 \u0000a\u0000s\u0000m\u00002\u0000h\u0000u\u0000g\u0000\r\u0000 \u0000#\u0000 \u0000a\u0000s\u0000m\u00002\u0000h\u0000u\u0000g\u0000\r\u0000 \u0000",
-  "main": "Index.js",
+  "main": "app.js",
   "dependencies": {
+    "body": "^5.1.0",
     "body-parser": "^1.19.0",
     "consolidate": "^0.15.1",
     "express": "^4.17.1",
