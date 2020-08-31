@@ -59,7 +59,8 @@
     <form action="/Product/insert" method="POST" >
     <div class="form-group" style="width: 50%">
       <label for="usr">Name</label>
-      <input type="text" class="form-control" id="usr" name="nameProduct">
+      <input type="text" class="form-control" id="usr" name="nameProduct" >
+      <label for ="" style="color:red">{{name.nameError}}</label>
     </div>
     <div class="form-group" style="width: 50%">
       <label for="pwd">Price</label>

@@ -32,18 +32,20 @@ router.post('/search',async (req,res)=>{ //search
 var MongoClient = require('mongodb').MongoClient;
 router.post('/insert',async (req,res)=>{
     let client= await MongoClient.connect(url);
-    let dbo = client.db("DBAsm");
-    
+    let dbo = client.db("DBAsm"); 
     let name = req.body.nameProduct; 
     let price = req.body.priceProduct;
-    console.log(name,price);
-    
-
-    let newProduct = {nameProduct : name, priceProduct : price}; //TenSP, Color, Price là ở trong mongodb
+    let newProduct = {nameProduct : name, priceProduct : price};
+    if(name.trim().length >5 && name.trim().length <10){
+        let nameEror = {nameError:"No"}
+        res.render('allProduct',{name:nameEror});
+    }
+    else{
+     //TenSP, Color, Price là ở trong mongodb
     await dbo.collection("Product").insertOne(newProduct);
-   
     let results = await dbo.collection("Product").find({}).toArray();
     res.render('allProduct',{Product:results});
+    }
 })
 
 
